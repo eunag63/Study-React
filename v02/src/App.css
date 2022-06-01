@@ -1,0 +1,15 @@
+.Diany {
+  border: 1px solid goldenrod;
+  text-align: center;
+  padding: auto;
+}
+
+.Diany input, textarea {
+  margin-bottom: 20px;
+  width:  500px;
+  padding: 10px;
+}
+
+.Diany textarea {
+  height: 150px;
+}
