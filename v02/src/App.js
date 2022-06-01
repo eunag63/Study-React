@@ -40,11 +40,15 @@ function App() {
     dataId.current += 1;
     setData([newItem, ...data])
   }
+  const onDelete = (targetId) => {
+    const newList = data.filter((it) => it.id !== targetId);
+    setData(newList)
+  }
   return (
     <div className="App">
       <h1>일기장</h1>
       <Diany onCreate={onCreate}></Diany>
-      <List list={data}></List>
+      <List list={data} onDelete={onDelete}></List>
     </div>
   );
 }
