@@ -1,6 +1,6 @@
 import {useState, useRef} from "react";
 
-const Diany = () => {
+const Diany = ({onCreate}) => {
     const [state, setState] = useState({
         author: "",
         content: "",
@@ -22,7 +22,13 @@ const Diany = () => {
             inputs.current.focus();
             return ;
         }
+        onCreate(state.author, state.content, state.emotion)
         alert("성공")
+        setState({
+            author: "",
+            content: "",
+            emotion: 1
+        })
     }
     return (
     <div className="Diany">
