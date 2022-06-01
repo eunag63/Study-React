@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useRef} from "react";
 
 const Diany = () => {
     const [state, setState] = useState({
@@ -12,8 +12,16 @@ const Diany = () => {
             [e.target.name]: e.target.value
         })
     }
+    const inputs = useRef();
     const save = () => {
-        console.log(state)
+        if(state.author.length < 1) {
+            inputs.current.focus();
+            return ;
+        }
+        if(state.content.length < 5) {
+            inputs.current.focus();
+            return ;
+        }
         alert("성공")
     }
     return (
@@ -21,6 +29,7 @@ const Diany = () => {
         <h2>오늘의 일기</h2>
         <div>
             <input 
+                ref={inputs}
                 name="author"
                 value={state.author} 
                 onChange={changeState}>
@@ -28,6 +37,7 @@ const Diany = () => {
         </div>
         <div>
             <textarea 
+                ref={inputs}
                 name="content"
                 value={state.content} 
                 onChange={changeState}>
