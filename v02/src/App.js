@@ -33,7 +33,7 @@ function App() {
           <Route path='/' element={<H></H>}></Route>
           <Route path='/n' element={<N></N>}></Route>
           <Route path='/e' element={<E></E>}></Route>
-          <Route path='/d' element={<D></D>}></Route>
+          <Route path='/d/:id' element={<D></D>}></Route>
         </Routes>
         <Test></Test>
         <h1>일기장</h1>
