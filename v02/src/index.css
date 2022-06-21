@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Button_default{
+  background-color: steelblue;
+  color: black;
+}
+
+.Button_positive{
+  background-color: yellowgreen;
+  color:white;
+}
+
+.Button_negative{
+  background-color:teal;
+  color:white;
+}
