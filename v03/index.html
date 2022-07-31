@@ -5,7 +5,22 @@
 </body>
 <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
-<script>
-
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    const Container = () => {
+        const [counter, modifier] = React.useState(0);
+        const onClick = () => {
+            // modifier(counter + 1);
+            modifier((i) => i + 1);
+        }
+        return (
+            <div>
+            <h3>클릭수 : {counter}</h3>
+            <button onClick={onClick}>클릭</button>
+            </div>
+        )
+    };
+    ReactDOM.render(<Container />, root);
 </script>
 </html>
