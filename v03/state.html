@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+</body>
+<script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const Container = () => {
+        const [minutes, setMinutes] = React.useState();
+        const [flipped, setFippend] = React.useState(false);
+        const onChange = (event) => {
+            // console.log(event.target.value);
+            setMinutes(event.target.value);
+        }
+        const reset = () => {
+            setMinutes(0);
+        }
+        const onFlip = () => {
+            reset();
+            setFippend((i) => !i);
+        }
+        return (
+            <div>
+                <h1>변환하기</h1>
+                <div>
+                    <label htmlFor="minutes">M</label>
+                    <input value={flipped ? minutes * 60 : minutes} id="minutes" type="number" onChange={onChange} disabled={flipped === true}></input>
+                </div>
+                <div>
+                    <label htmlFor="hours">H</label>
+                    <input value={flipped ? minutes : minutes / 60 } id="hours" type="number" disabled={flipped === false} onChange={onChange}></input>
+                </div>
+                <button onClick={reset}>초기화</button>
+                <button onClick={onFlip}>반대로</button>
+            </div>
+        )
+    };
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<Container />, root);
+</script>
+</html>
