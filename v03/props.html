@@ -7,16 +7,18 @@
 <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const Btn = ({text}) => {
+    const Btn = ({ text, changeValue }) => {
         console.log(props)
         return (
-            <button>{text}</button>
+            <button onClick={onClick}>{text}</button>
         )
     }
     const App = () => {
+        const [value, setValue] = React.useState("저장해");
+        const changeValue = () => setValue("바뀌었어");
         return (
             <div>
-                <Btn text="저장해" />
+                <Btn text={value} changeValue={changeValue} />
                 <Btn text="계속해" />
             </div>
         );
