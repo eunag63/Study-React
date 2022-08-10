@@ -1,30 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Button from "./Button";
 import styles from './App.module.css';
 
 function App() {
-  useEffect(() => {
-    console.log("Call the one!");
-  }, []);
-
-
-  function Hello() {
-    function byFn() {
-      console.log("bye");
-    }
-    function hiFn() {
-      console.log("hi");
-      return byFn;
-    }
-    useEffect(hiFn, []);
-    return <hi>Hello</hi>
-  }
-
-
+  const [todo, setTodo] = useState("");
+  const [todos, setTodos] = useState([]);
+  const onChange = (event) => setTodo(event.target.value);
+  const onSubmit = (event) => {
+    event.preventDefault()
+    if(todo === "" ) return;
+    setTodos(currentArray => [todo, ...todos])
+    setTodo("");
+  };
   return (
     <div>
-      <h1 className={styles.title}>Welcome Back!</h1>
-      <Button text={"계속"}></Button>
+      <h1>My Todo 👀</h1>
+      <h5>Total {todos.length} </h5>
+      <form onSubmit={onSubmit}>
+        <input value={todo} onChange={onChange} type="text" placeholder="todo write"></input>
+        <button>save</button>
+      </form>
+      <hr></hr>
+      {todos.map((i, index) => <li key={index}>{i}</li>)}
     </div>
   );
 }
